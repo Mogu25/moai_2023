@@ -1,0 +1,18 @@
+name: "Moai2022"
+navbar: 
+  left:
+    - text: "Moai2022"
+      href: https://ugui-guigui.wixsite.com/moai-esj2021
+    - text: "メンター紹介"
+      href: index.html
+output:
+  html_document:
+    theme: flatly
+    highlight: textmate
+    toc: false
+    toc_float:
+      collapse: false
+    df_print: "kable"
+    code_download: true
+    code_folding: hide
+output_dir: "docs"

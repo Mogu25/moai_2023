@@ -1,0 +1,86 @@
+---
+title: "メンター紹介"
+---
+
+
+```{r, echo = FALSE}
+
+rm(list=ls())  # reset workspace
+
+# install & load packages
+pacman::p_load(
+  tidyverse
+  , knitr  
+  , kableExtra # nice tables
+  , pander     # nice tables
+  , imager
+)
+
+# Rmarkdown settings
+knitr::opts_chunk$set(
+  prompt  = FALSE,  # Do not add > or + in inline-code
+  message = FALSE, 
+  comment = "", 
+  warning = FALSE,  # Mute warnings
+  tidy    = TRUE,
+  echo = FALSE
+  ) 
+options(knitr.kable.NA = '') # Hide NAs in kable table
+
+```
+
+アルファベット順です。申込フォームからお申し込みください。応募は、定員に達し次第締めきっております。<br>
+
+なお、Firefox・Safari等のブラウザでは、申込フォームを新しいタブで開いてください。前のページに戻れなくなる不具合を確認しております。 <br>
+
+<div style="margin-bottom:70px;">
+</div>
+
+```{r, results='asis', echo = FALSE}
+
+dat <- read_csv('./Menter.csv') %>%
+  as_tibble() %>% 
+  #filter(.$'相談相手役をお引き受けいただけますか？' == "可") %>% 
+  rename(
+    "Schedule" = "以下の大会開催期間のうち、モアイ実施が可能な日程を選択ください。なお時間帯はお昼あるいは夕方以降など公式プログラムの自由時間にあたる期間を設定ください。",
+    "Name" = "お名前",
+    "Keys" = "研究分野と研究手法や対象に関するキーワードをご記入ください。",
+    "HP" = "ご自身のHPがあればURLをご記入ください。",
+    "Message" = "メンティーへのメッセージがあれば自由にご記入ください。",
+    "申込フォーム" = "Entry_URL"
+  ) %>% 
+  select(Name, Keys, Message, HP, Photo_name, 申込フォーム) %>% 
+  arrange(Photo_name) %>% 
+  as_tibble()
+
+
+# Loop for each menter (listed on "photo_name")
+for(i in dat$Photo_name) {
+  
+  # Show data
+  dat %>%
+    filter(Photo_name == i) %>%
+    as.data.frame() %>%
+    mutate(Name_2 = str_c(.$Name, " さん")) %>% 
+    column_to_rownames("Name_2") %>%
+    select(-Photo_name, -Name) %>%    
+    t %>%                      
+    as.data.frame() %>%
+    drop_na() %>%
+    kable("html") %>%
+    kable_styling("striped", position = "left", font_size = 16) %>%
+    column_spec(1, width = "9em") %>% 
+    print()
+  
+  # Show picture
+  load.image(paste0("./pics/", i)) %>%
+    # load.image(dat.2[i,"Photo.URL"]) %>%
+    # imresize(.7) %>% # Compress pix
+    plot(axes = FALSE, xlab = "", ylab = "")
+  
+}
+
+
+```
+
+
