@@ -38,18 +38,17 @@ options(knitr.kable.NA = '') # Hide NAs in kable table
 
 ```{r, results='asis', echo = FALSE}
 
-dat <- read_csv('./Menter.csv') %>%
+dat <- read_csv('./Menter_2023.csv') %>%
   as_tibble() %>% 
   #filter(.$'相談相手役をお引き受けいただけますか？' == "可") %>% 
   rename(
     "Schedule" = "以下の大会開催期間のうち、モアイ実施が可能な日程を選択ください。なお時間帯はお昼あるいは夕方以降など公式プログラムの自由時間にあたる期間を設定ください。",
-    "Name" = "お名前",
-    "Keys" = "研究分野と研究手法や対象に関するキーワードをご記入ください。",
-    "HP" = "ご自身のHPがあればURLをご記入ください。",
-    "Message" = "メンティーへのメッセージがあれば自由にご記入ください。",
-    "申込フォーム" = "Entry_URL"
+    "Name" = "名前",
+    "Keys" = "キーワード",
+    "HP" = "HP",
+    "Message" = "メッセージ"
   ) %>% 
-  select(Name, Keys, Message, HP, Photo_name, 申込フォーム) %>% 
+  select(Name, Keys, Message, HP) %>% 
   arrange(Photo_name) %>% 
   as_tibble()
 
@@ -73,7 +72,7 @@ for(i in dat$Photo_name) {
     print()
   
   # Show picture
-  load.image(paste0("./pics/", i)) %>%
+  load.image(paste0("./pics2023/", i)) %>%
     # load.image(dat.2[i,"Photo.URL"]) %>%
     # imresize(.7) %>% # Compress pix
     plot(axes = FALSE, xlab = "", ylab = "")
