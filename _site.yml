@@ -1,7 +1,7 @@
-name: "Moai2022"
+name: "Moai2023"
 navbar: 
   left:
-    - text: "Moai2022"
+    - text: "Moai2023"
       href: https://ugui-guigui.wixsite.com/moai-esj2021
     - text: "メンター紹介"
       href: index.html
