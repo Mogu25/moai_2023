@@ -38,7 +38,7 @@ options(knitr.kable.NA = '') # Hide NAs in kable table
 
 ```{r, results='asis', echo = FALSE}
 
-dat <- read_csv('./Menter_2023.csv') %>%
+dat <- read_csv('./Menter_2023_2.csv') %>%
   as_tibble() %>% 
   #filter(.$'相談相手役をお引き受けいただけますか？' == "可") %>% 
   rename(
