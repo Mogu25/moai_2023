@@ -48,7 +48,7 @@ dat <- read_csv('./Menter_2023.csv') %>%
     "HP" = "HP",
     "Message" = "メッセージ"
   ) %>% 
-  select(Name, Keys, Message, HP) %>% 
+  select(Name, Keys, Message, HP, Photo_name) %>% 
   arrange(Photo_name) %>% 
   as_tibble()
 
