@@ -13,7 +13,7 @@
 
 <title>メンター紹介</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -57,6 +57,7 @@ if (window.hljs) {
 
 
 
+
 <style type="text/css">
 #rmd-source-code {
   display: none;
@@ -87,6 +88,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -144,11 +148,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -242,7 +250,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -252,7 +260,7 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="https://ugui-guigui.wixsite.com/moai-esj2021">Moai2022</a>
+  <a href="https://ugui-guigui.wixsite.com/moai-esj2021">Moai2023</a>
 </li>
 <li>
   <a href="index.html">メンター紹介</a>
@@ -268,7 +276,7 @@ $(document).ready(function () {
 <div id="header">
 
 <div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
@@ -285,7 +293,8 @@ $(document).ready(function () {
 
 
 <p>アルファベット順です。申込フォームからお申し込みください。応募は、定員に達し次第締めきっております。<br></p>
-<p>なお、Firefox・Safari等のブラウザでは、申込フォームを新しいタブで開いてください。前のページに戻れなくなる不具合を確認しております。 <br></p>
+<p>なお、Firefox・Safari等のブラウザでは、申込フォームを新しいタブで開いてください。前のページに戻れなくなる不具合を確認しております。
+<br></p>
 <div style="margin-bottom:70px;">
 
 </div>
@@ -295,7 +304,7 @@ $(document).ready(function () {
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-藤木　庄五郎 さん
+梁 Masahiro Ryo さん
 </th>
 </tr>
 </thead>
@@ -305,7 +314,7 @@ $(document).ready(function () {
 Keys
 </td>
 <td style="text-align:left;">
-森林生態学、生物多様性、リモートセンシング、市民参加型調査、アプリ、起業、スタートアップ
+ドイツ＆スイスでの博士課程・ポスドク・教授キャリアに関して、人工知能、機械学習、データ解析、生物多様性、農業、持続可能性、全地球的変化
 </td>
 </tr>
 <tr>
@@ -313,15 +322,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-株式会社バイオームを設立、いきものコレクションアプリ「Biome」を開発・運営しています。起業とか、研究職以外のキャリアについてお話しできるかと思います。
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-&lt;U+00A0&gt;<a href="https://biome.co.jp" class="uri">https://biome.co.jp</a>
+015年に日本の大学で博士課程を取り、そこからスイス・ドイツでポスドクをし、2020年にはドイツの大学で教授兼ライプニッツ農地景観研究所で人工知能チームを率いています。西ヨーロッパでの研究生活・キャリアに興味がある方には具体的に色々お話できると思います。
 </td>
 </tr>
 </tbody>
@@ -333,7 +334,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-深野　祐也 さん
+松崎慎一郎 さん
 </th>
 </tr>
 </thead>
@@ -343,7 +344,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-進化生態、進化心理、植物、農業、人間、保全
+陸水学、長期観測研究、生態系管理（湖沼や流域）、農業と環境保全、生物と環境の相互作用、魚類生態、チームサイエンス、国際貢献、在外研究（子連れ）
 </td>
 </tr>
 <tr>
@@ -351,7 +352,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-農場で働いてます。専門が迷子ですが、進化生態学を軸に基礎から応用まで幅広く興味があります。家事育児しながらの研究スタイルを模索中です。SF好きです。
+次の一歩を踏み出すための手がかりを一緒に探していければと思います。誰に聞くべきか迷うこともまずはご相談を（いい人紹介します）。
 </td>
 </tr>
 <tr>
@@ -359,7 +360,8 @@ Message
 HP
 </td>
 <td style="text-align:left;">
-<a href="https://yuyafukano.wixsite.com/portfolio/about-me" class="uri">https://yuyafukano.wixsite.com/portfolio/about-me</a>
+<a href="https://freshwaterconservation.weebly.com/"
+class="uri">https://freshwaterconservation.weebly.com/</a>
 </td>
 </tr>
 </tbody>
@@ -371,7 +373,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-深谷　肇一 さん
+鈴木まほろ さん
 </th>
 </tr>
 </thead>
@@ -381,7 +383,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-統計生態学、個体群生態学、群集生態学、統計モデリング
+博物館学芸員、地域の自然史研究、植物相調査、市民調査
 </td>
 </tr>
 <tr>
@@ -389,15 +391,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-気軽にお越しください。みなさんのお役に立てれば幸いです。
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="https://fukayak.github.io/" class="uri">https://fukayak.github.io/</a>
+博物館学芸員の仕事内容や、地域の中で生態学の知識を活かす仕事については、１サンプルとしての情報提供が可能です。また、岩手県で野外調査をしたい方はお気軽に御相談下さい。
 </td>
 </tr>
 </tbody>
@@ -409,7 +403,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-伊勢　武史 さん
+深見理 さん
 </th>
 </tr>
 </thead>
@@ -419,7 +413,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-森林生態学・気候変動・シミュレーション・人工知能・産学連携・シチズンサイエンス・社会発信・進化心理学・学際融合
+群集生態、進化生態、生態系機能、植物、鳥、昆虫、菌類、細菌、送粉、伝統知、留学、海外就職
 </td>
 </tr>
 <tr>
@@ -427,15 +421,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-メンターにはなれないかもしれない。みなさんの反面教師として・観察対象としてならお役に立てるかも？生態学の知見で環境を守り社会を良くしたいという人生の目標はあるものの、声をかけられるとなんでも安請け合いしてしまう貧乏性ゆえに、キーワードが発散しております。バリバリの理系のツールを使って研究しているものの頭のなかは文系で、本を読んだり書いたりするのが好きです。
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="https://takeshi-ise.tumblr.com" class="uri">https://takeshi-ise.tumblr.com</a>
+みなさんの研究の内容や研究生活での悩みや迷いや夢など、なんでも話せるとうれしいです。留学や海外就職についても話し相手になれると思います。
 </td>
 </tr>
 </tbody>
@@ -447,7 +433,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-鏡味　麻衣子 さん
+三木　健 さん
 </th>
 </tr>
 </thead>
@@ -457,7 +443,9 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-水域生態学（琵琶湖，東京湾など），微生物（プランクトン，ツボカビなど），感染症，食物網，物質循環，宿主―寄生者関係
+数理生態学（微生物食物網、生物多様性、生態系機能、植物‐土壌フィードバック、Empirical
+Dynamic Modelなど）
+プランクトン（植物プランクトン、ツボカビなど）、定量生態学
 </td>
 </tr>
 <tr>
@@ -465,7 +453,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-水域や微生物の研究，ヨーロッパでの研究生活，私立・国立大学の研究環境，宮地賞への応募，学振採択の技，結婚育児と研究の相互作用，持続可能なお酒の飲み方などなど，なんでも歓迎します。一緒に語り合いましょう。
+大学院以来の移動回数は決して多くありませんが、大都会（台北）、都市近郊（瀬田）から森の中（Neuglobsow）までいろいろな環境で過ごしてきました。研究のこと、就職までの道のり、日々の生活のこと（同業のパートナーとの同居・別居など）、大学のこと（教育や運営）、フィクションの世界（小説やアニメ）を楽しむことなど、いろんなことを語り合いましょう。
 </td>
 </tr>
 <tr>
@@ -473,7 +461,8 @@ Message
 HP
 </td>
 <td style="text-align:left;">
-<a href="https://makagami.wixsite.com/mycoloop" class="uri">https://makagami.wixsite.com/mycoloop</a>
+<a href="https://sites.google.com/view/quantitative-ecology-lab"
+class="uri">https://sites.google.com/view/quantitative-ecology-lab</a>
 </td>
 </tr>
 </tbody>
@@ -485,7 +474,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-久保田　康裕 さん
+中濱直之 さん
 </th>
 </tr>
 </thead>
@@ -495,7 +484,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-群集生態学、生物地理学、マクロ生態学、システム化保全計画
+保全遺伝学、保全生態学、生物多様性保全、昆虫、植物、絶滅危惧種、群集生態学、ゲノム、次世代シーケンサー、系統地理学、博物館
 </td>
 </tr>
 <tr>
@@ -503,15 +492,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-森林生態系の長期観察からスタートして、いつの間にか、生物多様性ビッグデータまで手を広げることになりました。最近は、生態学の知見を社会実装して、基礎的な記載研究を推進することを、考えています。
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="https://kubota-yasuhiro.weebly.com" class="uri">https://kubota-yasuhiro.weebly.com</a>
+遺伝解析やフィールドワークにより生物多様性保全に貢献する研究を実施しています。研究や進路、自己実現などなど、悩みも多いかと思います。多少なりともお役に立てればと思いますので、どうぞお気軽にご連絡ください。
 </td>
 </tr>
 </tbody>
@@ -523,7 +504,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-工藤　洋 さん
+伊谷行 さん
 </th>
 </tr>
 </thead>
@@ -533,7 +514,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-植物生態学、分子生態学、繁殖生態学、生活史生態学、フェノロジー、局所適応、クローン植物、種子散布、トランスクリプトーム、エピジェネティクス
+海洋自然史学、地下ベントス学、巣穴、住み込み共生、地方大学、教育学部
 </td>
 </tr>
 <tr>
@@ -541,15 +522,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-こんにちは。植物の生活史、適応、環境応答を研究しています。現在は、数週間～数カ月以上の長期の環境変動に対するエピジェネテックな遺伝子発現制御をフィールドで調べています。植物生態や分子生態に関連した話ができると思います。学部生のときから現在まで、7か所の大学や研究所に所属しました。そういうことに関連したアドバイスもできるかも。どうぞお気軽に。
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="https://www.ecology.kyoto-u.ac.jp/~kudoh/index.html" class="uri">https://www.ecology.kyoto-u.ac.jp/~kudoh/index.html</a>
+あれれ?と驚く発見の嬉しさをみなで味わうことができると楽しいですね。
 </td>
 </tr>
 </tbody>
@@ -561,7 +534,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-松浦　健二 さん
+佐賀達矢 さん
 </th>
 </tr>
 </thead>
@@ -571,7 +544,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-昆虫生態学、社会生物学、進化生態学、ゲノムインプリンティング、シロアリ
+高校教諭、総合的な学習、科学部、行動生態学、環境教育、昆虫食
 </td>
 </tr>
 <tr>
@@ -579,15 +552,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-もし自分がやっていなかったら、人類はこんな面白いこと知らずに終わっただろうなって思えるような発見をしたいと、いつまでも現場で虎視眈々と狙っているような、そういう当たり前の研究者であり続けたいと思ってます。
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="http://www.insecteco.kais.kyoto-u.ac.jp/" class="uri">http://www.insecteco.kais.kyoto-u.ac.jp/</a>
+私は、修士課程の後すぐに博士課程に進む自信も経済的な余裕もありませんでした。悩んだ末、高校理科教員として4年間働いた後で博士課程に進みました。博士号取得後にも高校理科教員を5年間務めました。高校理科、科学研究指導、環境教育に興味がある方へは一例ですがお話できますが、どなたでも歓迎です。
 </td>
 </tr>
 </tbody>
@@ -599,7 +564,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-宮竹　貴久 さん
+和田葉子 さん
 </th>
 </tr>
 </thead>
@@ -609,7 +574,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-動物行動学、応用昆虫学、昆虫生態学
+群集生態学、実証研究、粘液ねばねば研究、岩礁潮間帯、子育てとの両立
 </td>
 </tr>
 <tr>
@@ -617,15 +582,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-私は県行政職から研究職を経て大学に異動しました。この経歴はおそらく異色でご参考にならないとは思いますが、もし興味をお持ちの方がいましたらどうぞ。
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="https://sites.google.com/view/miyatake/home?authuser=0" class="uri">https://sites.google.com/view/miyatake/home?authuser=0</a>
+岩礁域で生物の種間関係を調べています。生物どうしがどんなコミュニケーションを取りながら関わりあっているのか、それが群集をどう動かすのか知りたいと思っています。研究と子育ての両立に絶賛悩み中！そんなお話もぜひしたいです！
 </td>
 </tr>
 </tbody>
@@ -637,7 +594,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-大橋　瑞江 さん
+土居秀幸 さん
 </th>
 </tr>
 </thead>
@@ -647,7 +604,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-森林、炭素循環、地下部、土壌生物、根っこ、フィンランド、マレーシア
+生物圏情報学、群集生態学、気候変動、環境DNA
 </td>
 </tr>
 <tr>
@@ -655,7 +612,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-学位取得後、国内や海外で長くポスドクをしました。私も研究を続ける中でいつも不安や迷いを抱えていました。話をすることがそれを軽減させる一助になれば嬉しいです。
+海外での研究などを経て、データ解析からフィールドまで生態学・生物学・農学に関連する様々な命題にアプローチしようと試みています。お気軽にお越しください。みなさんとお話しできるのを楽しみにしております。
 </td>
 </tr>
 <tr>
@@ -663,7 +620,8 @@ Message
 HP
 </td>
 <td style="text-align:left;">
-<a href="https://sites.google.com/view/mizueohashi" class="uri">https://sites.google.com/view/mizueohashi</a>
+<a href="https://ecologyweb.jimdofree.com/"
+class="uri">https://ecologyweb.jimdofree.com/</a>
 </td>
 </tr>
 </tbody>
@@ -675,7 +633,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-酒井　章子 さん
+太田民久 さん
 </th>
 </tr>
 </thead>
@@ -685,7 +643,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-植物の繁殖、送粉、熱帯、花の上の細菌、社会ー生態システム
+森林植生と物質循環、河川、底生無脊椎動物、同位体分析、有機物分析
 </td>
 </tr>
 <tr>
@@ -693,15 +651,8 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-気軽に声をかけてください！お話できるのを楽しみにしています。
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="https://www.ecology.kyoto-u.ac.jp/~sakai/" class="uri">https://www.ecology.kyoto-u.ac.jp/~sakai/</a>
+まだまだ人に偉そうなことを言える立場ではありませんが、楽しくお話できれば嬉しいです。
+学生やポスドク時代にどのようなことを考えていたか、自分なりの成功(失敗)体験など共有できればと思います。
 </td>
 </tr>
 </tbody>
@@ -713,7 +664,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-先崎　理之 さん
+安田仁奈 さん
 </th>
 </tr>
 </thead>
@@ -723,7 +674,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-鳥類、群集、保全、感覚生態学、データベース解析、フィールドワーク
+サンゴ礁、遺伝的多様性、海洋保護区、ワンオペ育児、地方大学とキャリア形成、オニヒトデ、初期生態
 </td>
 </tr>
 <tr>
@@ -731,7 +682,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-鳥を主たる対象にフィールドと既存データの双方のアプローチから研究しています。 これらに関連していてもしていなくても何か聞いてほしい、聞いてみたいことがあればお気軽にお越しください。
+一才児のワンオペ育児をしながら研究、教育、社会貢献などに携わっています。もともと野外調査の多い研究内容だったため、今も試行錯誤をしながらやっています。地方大学にいた時間も長く宮崎に愛着が深いです。歌が好きです。気楽にお話をできたらと思います。
 </td>
 </tr>
 <tr>
@@ -739,7 +690,8 @@ Message
 HP
 </td>
 <td style="text-align:left;">
-<a href="https://masayukisenzaki.wixsite.com/senzaki" class="uri">https://masayukisenzaki.wixsite.com/senzaki</a>
+<a href="https://sites.google.com/view/yu-fukasawas-website"
+class="uri">https://sites.google.com/view/yu-fukasawas-website</a>
 </td>
 </tr>
 </tbody>
@@ -751,7 +703,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-塩尻　かおり さん
+小林朋道 さん
 </th>
 </tr>
 </thead>
@@ -761,7 +713,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-匂い・化学生態学・植物間コミュニケーション・昆虫ー植物相互作用・寄生蜂・3者系
+動物行動学、大学が求めている教員の特性
 </td>
 </tr>
 <tr>
@@ -769,15 +721,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-人と話すことと新しい人と知り合いになることが好きでなので、楽しみにしています。お気軽にどうぞ。
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="https://shiojiri-kaori.localinfo.jp" class="uri">https://shiojiri-kaori.localinfo.jp</a>
+お役に立つかどうかわかりませんが、私の経験からお答えします。
 </td>
 </tr>
 </tbody>
@@ -789,7 +733,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-末次　健司 さん
+小林真 さん
 </th>
 </tr>
 </thead>
@@ -799,7 +743,8 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-ナチュラルヒストリー、送粉共生、種子散布共生、菌根共生、ラン科植物、光合成をやめた植物
+植物生態学、土の中、環境変動、北方林、ツンドラ、撹乱、野外操作実験、大学
+研究林
 </td>
 </tr>
 <tr>
@@ -807,15 +752,10 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-「ナチュラルヒストリー」、「寄生と共生」をキーワードに、植物をめぐる生物間相互作用の研究を行っています。自分の眼で観察して得られたアイデアをもとに研究するのを大事にしています。難しい相談には乗れませんが自然史に興味がある方に対しては、お話できることもあるかなと思います。お気軽にご連絡ください。
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="https://sites.google.com/site/suetsugujp/home" class="uri">https://sites.google.com/site/suetsugujp/home</a>
+幸か不幸か人のあまり行かない辺境地（寒いところ）での研究をしてきました。
+海外の研究者と友人になるのが得意です。
+上述のキーワードや、海外に出てみたいけど悩んでいる方、その他、何でも聞い
+てみたいことがあればお気軽にお越しください。
 </td>
 </tr>
 </tbody>
@@ -827,7 +767,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-菅澤　承子 さん
+本庄三恵 さん
 </th>
 </tr>
 </thead>
@@ -837,7 +777,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-動物行動、行動生態学、認知行動学、道具使用、巣作り、物体操作、渡り、イギリスでの研究&lt;U+2022&gt;教育&lt;U+2022&gt;就活、女性研究者、メンタルヘルス
+微生物生態学、生物間相互作用、植物生態学、ウイルス、トランスクリプトーム、陸水学
 </td>
 </tr>
 <tr>
@@ -845,15 +785,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-日本で修士号を取得し、博士課程以降はイギリスで動物の行動について研究してきました。研究の話、セルフケアやメンタルヘルスの話、女性研究者としての話、海外での研究の話などについてシェアできます。ほかの話題も歓迎なので、お気軽にどうぞ！
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="http://shokosugasawa.weebly.com" class="uri">http://shokosugasawa.weebly.com</a>
+陸水学から始まり現在は陸域で、植物とウイルス、昆虫との相互作用について野外トランスクリプトームなどの手法を用いながら研究しています。研究の話、子育てと仕事の両立についてなど少しでも情報共有できればと思います。お気軽にご連絡ください。
 </td>
 </tr>
 </tbody>
@@ -865,7 +797,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-杉浦　真治 さん
+村山美穂 さん
 </th>
 </tr>
 </thead>
@@ -875,7 +807,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-自然史、群集、防衛、捕食、共生、昆虫
+絶滅危惧種、哺乳類、鳥類、遺伝的多様性、機能遺伝子、生息域外保全
 </td>
 </tr>
 <tr>
@@ -883,15 +815,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-人のお話を聴いたり話したりするのが好きですので、お気軽にどうぞ。
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="https://sites.google.com/site/shinjisugiuraweb/home" class="uri">https://sites.google.com/site/shinjisugiuraweb/home</a>
+絶滅危惧種のDNAや細胞を、飼育施設と連携して保存し、解析した結果を保全に役立てる研究をしています。またガーナの留学生の縁で、家畜飼育によって環境保全を目指すNGOを立ち上げるなど、野生動物との共生のためにできることを探しています。大学院生の時には、今の研究は予想できませんでしたが、一歩ずつ進むうちに世界が広がってきたように思います。
 </td>
 </tr>
 </tbody>
@@ -903,7 +827,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-照井　慧 さん
+林亮太 さん
 </th>
 </tr>
 </thead>
@@ -913,7 +837,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-河川生態学、統計、海外就職
+会社員、建設コンサルタント、フィールドワーク、自然史、分類学、本草学、フジツボ、ウミガメ、クジラ、ヒシバッタ
 </td>
 </tr>
 <tr>
@@ -921,7 +845,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-河川生態学を専門にしていますが、生態学全般に興味があります。日本で学位・ポスドクをやってからアメリカに来て、そこからアメリカの大学のファカルティポジションについたので、海外就職のキャリアパスについても多少は有益な情報を共有できるかもしれません。よろしくお願いいたします。
+民間企業の会社員ですが、奇跡的に学生時代から続くテーマで研究を続けることができています。まったく再現性のない話しかできませんが、それでもよければお声がけください。
 </td>
 </tr>
 <tr>
@@ -929,7 +853,8 @@ Message
 HP
 </td>
 <td style="text-align:left;">
-<a href="https://aterui.github.io/aquaecolab/" class="uri">https://aterui.github.io/aquaecolab/</a>
+<a href="https://coronuloidea.webnode.jp/"
+class="uri">https://coronuloidea.webnode.jp/</a>
 </td>
 </tr>
 </tbody>
@@ -941,7 +866,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-東樹　宏和 さん
+桜井良　 さん
 </th>
 </tr>
 </thead>
@@ -951,7 +876,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-生物多様性、生物間相互作用、生物群集動態、地球生態系、共進化、ナチュラル・ヒストリー
+野生動物管理、ヒューマンディメンション、環境教育の評価、社会心理学、社会調査
 </td>
 </tr>
 <tr>
@@ -959,15 +884,10 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-フィールドワークで多様な生態系や生物たちを観察しながら、「まだ誰も見たことのない世界」を見たくて、異なる研究分野を融合させながら、いろんな挑戦をしてきました。昆虫、植物、きのこ、きのこも作らない真菌たち、多様な細菌、クモ、ミミズ。これまでに対象としてきた生物も多様ですが、生態系はもっとずっと大きい。さあ、生物多様性科学のフロンティアへ！
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="https://sites.google.com/site/ecoltj" class="uri">https://sites.google.com/site/ecoltj</a>
+学生/院生、ポスドクの皆さん。こんにちは。研究生活をどのようにお過ごしでしょうか。
+私自身の学生生活やポスドクの日々はとても充実していましたが、
+定職に就けるのかなど、将来への悩み・心配事も多かったです。
+未来を切り開く皆さんにとって、少しでも何かお役に立てるようなお話しができれば嬉しいです。
 </td>
 </tr>
 </tbody>
@@ -979,7 +899,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-辻　かおる さん
+深澤遊 さん
 </th>
 </tr>
 </thead>
@@ -989,7 +909,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-花、昆虫、微生物、雌雄差、生物間相互作用、群集、進化
+菌類・枯死木・生物間相互作用・森林・生物地理・微生物の知能
 </td>
 </tr>
 <tr>
@@ -997,15 +917,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-気軽に遊びにきてください。研究でも、その他のこと等でも、歓迎です。 オンラインで残念ですが、お会いできるのを楽しみにしています。
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="https://ktsuji.jimdofree.com" class="uri">https://ktsuji.jimdofree.com</a>
+僕も自由集会のあとの飲み会でいろんな先生に話を聞きに行きました。お気軽にどうぞ。
 </td>
 </tr>
 </tbody>
@@ -1017,7 +929,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-占部　城太郎 さん
+藤井一至 さん
 </th>
 </tr>
 </thead>
@@ -1027,7 +939,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-河川湖沼生態系、淡水生物、生理生態、生物群集、化学量論、国際貢献、学振
+植物土壌間相互作用、土壌微生物、根圏、熱帯林、ツンドラ
 </td>
 </tr>
 <tr>
@@ -1035,15 +947,7 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-もはや古い人間の部類ですが、なんでもお話しします。その代わり、面白い話も、聞かせてね。
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="https://tohokuecology.jp/aquatic/" class="uri">https://tohokuecology.jp/aquatic/</a>
+土について研究したい人、研究の独自性の出し方に悩んでいる人にアドバイスできればと思います。学振や創発の応募の悩み相談も可能です。私自身は研究と将棋の両立に悩んでいます。一緒に悩みましょう。
 </td>
 </tr>
 </tbody>
@@ -1055,7 +959,7 @@ HP
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
-矢原　徹一 さん
+高津邦夫　 さん
 </th>
 </tr>
 </thead>
@@ -1065,7 +969,7 @@ HP
 Keys
 </td>
 <td style="text-align:left;">
-保全生態学入門改訂　絶滅危惧植物全国調査　一般社団法人九州オープンユニバーシティ立ち上げ　ダーウィンコースとニュートンコース　屋久島生態系管理　性の進化
+海外留学、スイス、表現型可塑性、早期生活史形質、共食い
 </td>
 </tr>
 <tr>
@@ -1073,98 +977,14 @@ Keys
 Message
 </td>
 <td style="text-align:left;">
-『キリン解剖記』と『もがいてもがいて古生物学者』の一読をお勧めします。若いときはいろいろ悩むことが多いと思いますが、少しずつ前に進んでいれば、そのうち素敵な景色がひろがってくると思います。
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="https://twitter.com/TetYahara?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="uri">https://twitter.com/TetYahara?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor</a>
+博士課程の途中までパスポートすら持っていませんでしたが、今は海外生活５年生です。日本では両生類幼生を使って研究をしてきましたが、今はサケ科魚類を扱っています。私自身の経験や同僚からもらった情報など、海外留学についていくらか役立つ情報を提供できるかもしれません。よろしくお願いいたします。
 </td>
 </tr>
 </tbody>
 </table>
-<img src="index_files/figure-html/unnamed-chunk-2-21.png" width="672" />
-<table class="table table-striped" style="font-size: 16px; ">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-山守　瑠奈 さん
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;width: 9em; ">
-Keys
-</td>
-<td style="text-align:left;">
-海洋生物・ナチュラルヒストリー・共生系・住み込み共生・フィールドワーク
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-Message
-</td>
-<td style="text-align:left;">
-海洋生物の多様性を形作る共生系について研究をしています。海洋生物や海のフィールドワーク、海洋生物学系の進路についてお話し出来るかと思います。お答え出来る範囲であればどんな話題でも歓迎いたしますので、お気軽にお越しください。
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="https://hanazara87.wixsite.com/lunayamamori" class="uri">https://hanazara87.wixsite.com/lunayamamori</a>
-</td>
-</tr>
-</tbody>
-</table>
-<img src="index_files/figure-html/unnamed-chunk-2-22.png" width="672" />
-<table class="table table-striped" style="font-size: 16px; ">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-山浦　悠一 さん
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;width: 9em; ">
-Keys
-</td>
-<td style="text-align:left;">
-景観生態学、森林、林業、鳥類、保全
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-Message
-</td>
-<td style="text-align:left;">
-長野の山村で生まれ育ち、各地を転々としてきました――地バチを追い、キノコを探し回っていたあの頃――。森林の生物多様性とその保全に関心を持っています。もしよければ、ご連絡ください。
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 9em; ">
-HP
-</td>
-<td style="text-align:left;">
-<a href="https://researchmap.jp/yamaura/" class="uri">https://researchmap.jp/yamaura/</a>
-</td>
-</tr>
-</tbody>
-</table>
-<p><img src="index_files/figure-html/unnamed-chunk-2-23.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-21.png" width="672" /></p>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIuODoeODs+OCv+ODvOe0ueS7iyINCi0tLQ0KDQoNCmBgYHtyLCBlY2hvID0gRkFMU0V9DQoNCnJtKGxpc3Q9bHMoKSkgICMgcmVzZXQgd29ya3NwYWNlDQoNCiMgaW5zdGFsbCAmIGxvYWQgcGFja2FnZXMNCnBhY21hbjo6cF9sb2FkKA0KICB0aWR5dmVyc2UNCiAgLCBrbml0ciAgDQogICwga2FibGVFeHRyYSAjIG5pY2UgdGFibGVzDQogICwgcGFuZGVyICAgICAjIG5pY2UgdGFibGVzDQogICwgaW1hZ2VyDQopDQoNCiMgUm1hcmtkb3duIHNldHRpbmdzDQprbml0cjo6b3B0c19jaHVuayRzZXQoDQogIHByb21wdCAgPSBGQUxTRSwgICMgRG8gbm90IGFkZCA+IG9yICsgaW4gaW5saW5lLWNvZGUNCiAgbWVzc2FnZSA9IEZBTFNFLCANCiAgY29tbWVudCA9ICIiLCANCiAgd2FybmluZyA9IEZBTFNFLCAgIyBNdXRlIHdhcm5pbmdzDQogIHRpZHkgICAgPSBUUlVFLA0KICBlY2hvID0gRkFMU0UNCiAgKSANCm9wdGlvbnMoa25pdHIua2FibGUuTkEgPSAnJykgIyBIaWRlIE5BcyBpbiBrYWJsZSB0YWJsZQ0KDQpgYGANCg0K44Ki44Or44OV44Kh44OZ44OD44OI6aCG44Gn44GZ44CC55Sz6L6844OV44Kp44O844Og44GL44KJ44GK55Sz44GX6L6844G/44GP44Gg44GV44GE44CC5b+c5Yuf44Gv44CB5a6a5ZOh44Gr6YGU44GX5qyh56ys57eg44KB44GN44Gj44Gm44GK44KK44G+44GZ44CCPGJyPg0KDQrjgarjgYrjgIFGaXJlZm9444O7U2FmYXJp562J44Gu44OW44Op44Km44K244Gn44Gv44CB55Sz6L6844OV44Kp44O844Og44KS5paw44GX44GE44K/44OW44Gn6ZaL44GE44Gm44GP44Gg44GV44GE44CC5YmN44Gu44Oa44O844K444Gr5oi744KM44Gq44GP44Gq44KL5LiN5YW35ZCI44KS56K66KqN44GX44Gm44GK44KK44G+44GZ44CCIDxicj4NCg0KPGRpdiBzdHlsZT0ibWFyZ2luLWJvdHRvbTo3MHB4OyI+DQo8L2Rpdj4NCg0KYGBge3IsIHJlc3VsdHM9J2FzaXMnLCBlY2hvID0gRkFMU0V9DQoNCmRhdCA8LSByZWFkX2NzdignLi9NZW50ZXIuY3N2JykgJT4lDQogIGFzX3RpYmJsZSgpICU+JSANCiAgI2ZpbHRlciguJCfnm7joq4fnm7jmiYvlvbnjgpLjgYrlvJXjgY3lj5fjgZHjgYTjgZ/jgaDjgZHjgb7jgZnjgYvvvJ8nID09ICLlj68iKSAlPiUgDQogIHJlbmFtZSgNCiAgICAiU2NoZWR1bGUiID0gIuS7peS4i+OBruWkp+S8mumWi+WCrOacn+mWk+OBruOBhuOBoeOAgeODouOCouOCpOWun+aWveOBjOWPr+iDveOBquaXpeeoi+OCkumBuOaKnuOBj+OBoOOBleOBhOOAguOBquOBiuaZgumWk+W4r+OBr+OBiuaYvOOBguOCi+OBhOOBr+WkleaWueS7pemZjeOBquOBqeWFrOW8j+ODl+ODreOCsOODqeODoOOBruiHqueUseaZgumWk+OBq+OBguOBn+OCi+acn+mWk+OCkuioreWumuOBj+OBoOOBleOBhOOAgiIsDQogICAgIk5hbWUiID0gIuOBiuWQjeWJjSIsDQogICAgIktleXMiID0gIueglOeptuWIhumHjuOBqOeglOeptuaJi+azleOChOWvvuixoeOBq+mWouOBmeOCi+OCreODvOODr+ODvOODieOCkuOBlOiomOWFpeOBj+OBoOOBleOBhOOAgiIsDQogICAgIkhQIiA9ICLjgZToh6rouqvjga5IUOOBjOOBguOCjOOBsFVSTOOCkuOBlOiomOWFpeOBj+OBoOOBleOBhOOAgiIsDQogICAgIk1lc3NhZ2UiID0gIuODoeODs+ODhuOCo+ODvOOBuOOBruODoeODg+OCu+ODvOOCuOOBjOOBguOCjOOBsOiHqueUseOBq+OBlOiomOWFpeOBj+OBoOOBleOBhOOAgiIsDQogICAgIueUs+i+vOODleOCqeODvOODoCIgPSAiRW50cnlfVVJMIg0KICApICU+JSANCiAgc2VsZWN0KE5hbWUsIEtleXMsIE1lc3NhZ2UsIEhQLCBQaG90b19uYW1lLCDnlLPovrzjg5Xjgqnjg7zjg6ApICU+JSANCiAgYXJyYW5nZShQaG90b19uYW1lKSAlPiUgDQogIGFzX3RpYmJsZSgpDQoNCg0KIyBMb29wIGZvciBlYWNoIG1lbnRlciAobGlzdGVkIG9uICJwaG90b19uYW1lIikNCmZvcihpIGluIGRhdCRQaG90b19uYW1lKSB7DQogIA0KICAjIFNob3cgZGF0YQ0KICBkYXQgJT4lDQogICAgZmlsdGVyKFBob3RvX25hbWUgPT0gaSkgJT4lDQogICAgYXMuZGF0YS5mcmFtZSgpICU+JQ0KICAgIG11dGF0ZShOYW1lXzIgPSBzdHJfYyguJE5hbWUsICIg44GV44KTIikpICU+JSANCiAgICBjb2x1bW5fdG9fcm93bmFtZXMoIk5hbWVfMiIpICU+JQ0KICAgIHNlbGVjdCgtUGhvdG9fbmFtZSwgLU5hbWUpICU+JSAgICANCiAgICB0ICU+JSAgICAgICAgICAgICAgICAgICAgICANCiAgICBhcy5kYXRhLmZyYW1lKCkgJT4lDQogICAgZHJvcF9uYSgpICU+JQ0KICAgIGthYmxlKCJodG1sIikgJT4lDQogICAga2FibGVfc3R5bGluZygic3RyaXBlZCIsIHBvc2l0aW9uID0gImxlZnQiLCBmb250X3NpemUgPSAxNikgJT4lDQogICAgY29sdW1uX3NwZWMoMSwgd2lkdGggPSAiOWVtIikgJT4lIA0KICAgIHByaW50KCkNCiAgDQogICMgU2hvdyBwaWN0dXJlDQogIGxvYWQuaW1hZ2UocGFzdGUwKCIuL3BpY3MvIiwgaSkpICU+JQ0KICAgICMgbG9hZC5pbWFnZShkYXQuMltpLCJQaG90by5VUkwiXSkgJT4lDQogICAgIyBpbXJlc2l6ZSguNykgJT4lICMgQ29tcHJlc3MgcGl4DQogICAgcGxvdChheGVzID0gRkFMU0UsIHhsYWIgPSAiIiwgeWxhYiA9ICIiKQ0KICANCn0NCg0KDQpgYGANCg0KDQo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAi44Oh44Oz44K/44O857S55LuLIgotLS0KCgpgYGB7ciwgZWNobyA9IEZBTFNFfQoKcm0obGlzdD1scygpKSAgIyByZXNldCB3b3Jrc3BhY2UKCiMgaW5zdGFsbCAmIGxvYWQgcGFja2FnZXMKcGFjbWFuOjpwX2xvYWQoCiAgdGlkeXZlcnNlCiAgLCBrbml0ciAgCiAgLCBrYWJsZUV4dHJhICMgbmljZSB0YWJsZXMKICAsIHBhbmRlciAgICAgIyBuaWNlIHRhYmxlcwogICwgaW1hZ2VyCikKCiMgUm1hcmtkb3duIHNldHRpbmdzCmtuaXRyOjpvcHRzX2NodW5rJHNldCgKICBwcm9tcHQgID0gRkFMU0UsICAjIERvIG5vdCBhZGQgPiBvciArIGluIGlubGluZS1jb2RlCiAgbWVzc2FnZSA9IEZBTFNFLCAKICBjb21tZW50ID0gIiIsIAogIHdhcm5pbmcgPSBGQUxTRSwgICMgTXV0ZSB3YXJuaW5ncwogIHRpZHkgICAgPSBUUlVFLAogIGVjaG8gPSBGQUxTRQogICkgCm9wdGlvbnMoa25pdHIua2FibGUuTkEgPSAnJykgIyBIaWRlIE5BcyBpbiBrYWJsZSB0YWJsZQoKYGBgCgrjgqLjg6vjg5XjgqHjg5njg4Pjg4jpoIbjgafjgZnjgILnlLPovrzjg5Xjgqnjg7zjg6DjgYvjgonjgYrnlLPjgZfovrzjgb/jgY/jgaDjgZXjgYTjgILlv5zli5/jga/jgIHlrprlk6HjgavpgZTjgZfmrKHnrKznt6DjgoHjgY3jgaPjgabjgYrjgorjgb7jgZnjgII8YnI+CgrjgarjgYrjgIFGaXJlZm9444O7U2FmYXJp562J44Gu44OW44Op44Km44K244Gn44Gv44CB55Sz6L6844OV44Kp44O844Og44KS5paw44GX44GE44K/44OW44Gn6ZaL44GE44Gm44GP44Gg44GV44GE44CC5YmN44Gu44Oa44O844K444Gr5oi744KM44Gq44GP44Gq44KL5LiN5YW35ZCI44KS56K66KqN44GX44Gm44GK44KK44G+44GZ44CCIDxicj4KCjxkaXYgc3R5bGU9Im1hcmdpbi1ib3R0b206NzBweDsiPgo8L2Rpdj4KCmBgYHtyLCByZXN1bHRzPSdhc2lzJywgZWNobyA9IEZBTFNFfQoKZGF0IDwtIHJlYWRfY3N2KCcuL01lbnRlcl8yMDIzLmNzdicpICU+JQogIGFzX3RpYmJsZSgpICU+JSAKICAjZmlsdGVyKC4kJ+ebuOirh+ebuOaJi+W9ueOCkuOBiuW8leOBjeWPl+OBkeOBhOOBn+OBoOOBkeOBvuOBmeOBi++8nycgPT0gIuWPryIpICU+JSAKICByZW5hbWUoCiAgICAjIlNjaGVkdWxlIiA9ICLku6XkuIvjga7lpKfkvJrplovlgqzmnJ/plpPjga7jgYbjgaHjgIHjg6LjgqLjgqTlrp/mlr3jgYzlj6/og73jgarml6XnqIvjgpLpgbjmip7jgY/jgaDjgZXjgYTjgILjgarjgYrmmYLplpPluK/jga/jgYrmmLzjgYLjgosgICAgICPjgYTjga/lpJXmlrnku6XpmY3jgarjganlhazlvI/jg5fjg63jgrDjg6njg6Djga7oh6rnlLHmmYLplpPjgavjgYLjgZ/jgovmnJ/plpPjgpLoqK3lrprjgY/jgaDjgZXjgYTjgIIiLAogICAgIk5hbWUiID0gIuWQjeWJjSIsCiAgICAiS2V5cyIgPSAi44Kt44O844Ov44O844OJIiwKICAgICJIUCIgPSAiSFAiLAogICAgIk1lc3NhZ2UiID0gIuODoeODg+OCu+ODvOOCuCIKICApICU+JSAKICBzZWxlY3QoTmFtZSwgS2V5cywgTWVzc2FnZSwgSFAsIFBob3RvX25hbWUpICU+JSAKICBhcnJhbmdlKFBob3RvX25hbWUpICU+JSAKICBhc190aWJibGUoKQoKCiMgTG9vcCBmb3IgZWFjaCBtZW50ZXIgKGxpc3RlZCBvbiAicGhvdG9fbmFtZSIpCmZvcihpIGluIGRhdCRQaG90b19uYW1lKSB7CiAgCiAgIyBTaG93IGRhdGEKICBkYXQgJT4lCiAgICBmaWx0ZXIoUGhvdG9fbmFtZSA9PSBpKSAlPiUKICAgIGFzLmRhdGEuZnJhbWUoKSAlPiUKICAgIG11dGF0ZShOYW1lXzIgPSBzdHJfYyguJE5hbWUsICIg44GV44KTIikpICU+JSAKICAgIGNvbHVtbl90b19yb3duYW1lcygiTmFtZV8yIikgJT4lCiAgICBzZWxlY3QoLVBob3RvX25hbWUsIC1OYW1lKSAlPiUgICAgCiAgICB0ICU+JSAgICAgICAgICAgICAgICAgICAgICAKICAgIGFzLmRhdGEuZnJhbWUoKSAlPiUKICAgIGRyb3BfbmEoKSAlPiUKICAgIGthYmxlKCJodG1sIikgJT4lCiAgICBrYWJsZV9zdHlsaW5nKCJzdHJpcGVkIiwgcG9zaXRpb24gPSAibGVmdCIsIGZvbnRfc2l6ZSA9IDE2KSAlPiUKICAgIGNvbHVtbl9zcGVjKDEsIHdpZHRoID0gIjllbSIpICU+JSAKICAgIHByaW50KCkKICAKICAjIFNob3cgcGljdHVyZQogIGxvYWQuaW1hZ2UocGFzdGUwKCIuL3BpY3MyMDIzLyIsIGkpKSAlPiUKICAgICMgbG9hZC5pbWFnZShkYXQuMltpLCJQaG90by5VUkwiXSkgJT4lCiAgICAjIGltcmVzaXplKC43KSAlPiUgIyBDb21wcmVzcyBwaXgKICAgIHBsb3QoYXhlcyA9IEZBTFNFLCB4bGFiID0gIiIsIHlsYWIgPSAiIikKICAKfQoKCmBgYAoKCg==</div>
 
 
 
